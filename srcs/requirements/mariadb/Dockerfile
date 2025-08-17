@@ -2,7 +2,8 @@ FROM alpine:3.21
 
 ARG DB_NAME \
     DB_USER \
-    DB_PASS
+    DB_PASS \
+    DB_ROOT
 
 RUN apk update && apk add mariadb mariadb-client
 
@@ -16,7 +17,6 @@ RUN mkdir /var/run/mysqld; \
     sed -i "s|skip-networking|skip-networking=0|g" \
       /etc/my.cnf.d/mariadb-server.cnf
 
-RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 COPY requirements/mariadb/conf/create_db.sh .
 RUN sh create_db.sh && rm create_db.sh
