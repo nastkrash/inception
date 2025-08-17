@@ -9,13 +9,12 @@ re: down all
 
 clean: down
 	@docker system prune -a
-	@rm -rf ~/data
+	@sudo rm -rf ~/data
 
-fclean:
+fclean: clean
 	@docker stop $$(docker ps -qa) || true
 	@docker system prune --all --force --volumes
 	@docker network prune --force
 	@docker volume prune --force
-	@rm -rf ~/data
 
 .PHONY	: all down re clean fclean
