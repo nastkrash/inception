@@ -1,9 +1,9 @@
 all:
 	@mkdir -p ~/data/mariadb ~/data/wordpress
-	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/.env up -d
+	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/secrets/.env up -d
 
 down:
-	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/.env down
+	@docker compose -f ./srcs/docker-compose.yml --env-file srcs/secrets/.env down
 
 re: down all
 
