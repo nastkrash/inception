@@ -1,11 +1,11 @@
 # Init database if not done yet
 if [ ! -d "/var/lib/mysql/mysql" ]; then
         chown -R mysql:mysql /var/lib/mysql
-        mysql_install_db --user=mysql --datadir=/var/lib/mysql
+        mariadb-install-db --user=mysql --datadir=/var/lib/mysql
 fi
 
 if [ ! -d "/var/lib/mysql/wordpress" ]; then
-        mysqld --user=mysql --bootstrap << EOF
+        /usr/bin/mariadbd --user=mysql --bootstrap << EOF
 FLUSH PRIVILEGES;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '${DB_ROOT}';
 CREATE DATABASE ${DB_NAME};
