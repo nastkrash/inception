@@ -26,8 +26,6 @@ services:
         DB_PASS: ${DB_PASS}
         DB_ROOT: ${DB_ROOT}
     container_name: mariadb
-    ports:
-      - "3306:3306"
     networks:
       - inception
     volumes:
@@ -66,4 +64,3 @@ volumes:
 
 networks:
     inception:
-        driver: bridge
